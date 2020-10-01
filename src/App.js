@@ -17,8 +17,12 @@ function App() {
   const fetchData = async () => {
     if(query !== '') {
       const result = await Axios.get(baseUrl)
+      if(!result.data.more) {
+        return setAlert('No recipes with this ingredient')
+      }
       setRecipes(result.data.hits)
       console.log(result)
+      setAlert('')
       setQuery('')
     } else {
       setAlert('Please fill in the field')
