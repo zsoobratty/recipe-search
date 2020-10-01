@@ -12,9 +12,19 @@ function App() {
     const result = await Axios.get(baseUrl)
     console.log(result)
   }
+
+  const handleCall = (e) => {
+    e.preventDefault()
+    fetchData()
+  }
+  
   return (
     <div className="App">
-      <h1 onClick={fetchData}>Recipe Search</h1>
+      <h1>Recipe Search</h1>
+      <form className="search-form" onSubmit={handleCall}>
+          <input type="text" placeholder="Search for some food" autoComplete="off"/>
+          <input type="submit" value="Search"/>
+      </form>
     </div>
   );
 }
