@@ -12,6 +12,7 @@ function App() {
   const fetchData = async () => {
     const result = await Axios.get(baseUrl)
     console.log(result)
+    setQuery('')
   }
 
   const handleCall = (e) => {
@@ -27,7 +28,7 @@ function App() {
     <div className="App">
       <h1>Recipe Search</h1>
       <form className="search-form" onSubmit={handleCall}>
-          <input type="text" placeholder="Search for some food" autoComplete="off" onChange={queryChange}/>
+          <input type="text" placeholder="Search for some food" autoComplete="off" onChange={queryChange} value={query}/>
           <input type="submit" value="Search"/>
       </form>
     </div>
