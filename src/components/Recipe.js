@@ -1,4 +1,5 @@
 import React from 'react'
+import RecipeDetails from './RecipeDetails'
 
 const Recipe = ({recipe}) => {
     const {label, image, url, ingredients} = recipe.recipe
@@ -10,6 +11,7 @@ const Recipe = ({recipe}) => {
                 URL
             </a>
             <button>Ingredients</button>
+            <RecipeDetails ingredients={ingredients} />
         </div>
     )
 }
