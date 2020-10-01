@@ -4,6 +4,7 @@ import Axios from 'axios'
 
 function App() {
   const [query, setQuery] = useState('')
+  const [recipes, setRecipes] = useState([])
 
   const APP_ID = '0992780d'
   const APP_KEY = '5e5d73059b0a4681aa46832ad940e2e7'
@@ -11,6 +12,7 @@ function App() {
 
   const fetchData = async () => {
     const result = await Axios.get(baseUrl)
+    setRecipes(result.data.hits)
     console.log(result)
     setQuery('')
   }
@@ -31,6 +33,10 @@ function App() {
           <input type="text" placeholder="Search for some food" autoComplete="off" onChange={queryChange} value={query}/>
           <input type="submit" value="Search"/>
       </form>
+      <div className="recipes">
+        {recipes !== [] && recipes.map((recipe) => 
+        <h2>{recipe.recipe.label}</h2>)}
+      </div>
     </div>
   );
 }
